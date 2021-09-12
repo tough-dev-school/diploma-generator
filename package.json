@@ -1,0 +1,25 @@
+{
+  "name": "education-svg2png",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -e js,svg index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fedor Borshev",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.3",
+    "svg-to-img": "^2.0.9"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.0"
+  }
+}
