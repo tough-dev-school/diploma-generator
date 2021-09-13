@@ -15,3 +15,7 @@ $ npm run dev
 ```sh
 $ http GET http://<service.url>/homework-template.png?name=Константин Константинопольской&sex=m Authorzation:"Bearer: <YOUR-SECRET-TOKEN>
 ```
+
+## CI and Delivery
+
+This services gets automatically deployed to heroku upon push to the master. The docker image is built on [heroku's premises](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml

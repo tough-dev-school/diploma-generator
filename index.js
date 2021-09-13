@@ -1,16 +1,18 @@
 const express = require("express");
 const bearerToken = require("express-bearer-token");
+const morgan = require("morgan");
 const svgToImg = require("svg-to-img");
 const nunjucks = require("nunjucks");
 const fs = require("fs").promises;
 
 const app = express();
 
+app.use(morgan("combined"));
 app.use(bearerToken());
 
 app.use((req, res, next) => {
   if (process.env.SECRET_TOKEN && process.env.SECRET_TOKEN !== req.token) {
-    res.status(401).send('Please use RFC6750 token auth');
+    res.status(401).send("Please use RFC6750 token auth");
     return;
   }
   next();
