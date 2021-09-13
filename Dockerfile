@@ -21,7 +21,7 @@ RUN wget https://github.com/google/fonts/archive/main.zip \
   && cd ../ && rm -Rf fonts-master
 
 WORKDIR /app
-ADD package*.json /app
+ADD package*.json /app/
 RUN npm ci
 
 ENV HOST 0.0.0.0
