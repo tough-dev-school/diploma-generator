@@ -13,10 +13,8 @@ RUN echo deb http://deb.debian.org/debian bullseye contrib non-free > /etc/apt/s
   && apt-get install -y --no-install-recommends fontconfig ttf-mscorefonts-installer \
   && rm -rf /var/lib/apt/lists/*
 
-ADD main.zip /
-# RUN wget https://github.com/google/fonts/archive/main.zip \
-
-RUN cd / && unzip main.zip \
+RUN wget https://github.com/google/fonts/archive/main.zip \
+  && unzip main.zip \
   && rm main.zip \
   && cd fonts-main && mv apache/* ofl/* ufl/* /usr/local/share/fonts/ \
   && fc-cache -v \
