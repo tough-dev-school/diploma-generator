@@ -5,7 +5,7 @@
     <rect y="887" width="1480" height="161" fill="url(#paint0_linear)"/>
     <rect x="38" y="439" width="1442" height="820" fill="url(#pattern0)"/>
     <rect y="887" width="1480" height="161" fill="url(#paint1_linear)"/>
-    <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Helvetica Neue" font-size="14" letter-spacing="0em">
+    <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="14" letter-spacing="0em">
       <tspan x="65" y="985.673">Существует теория, согласно которой первые школы в истории человечества появились не ради обучения, а для того, чтобы занять стариков и детей — две категории населения, которые были </tspan>
       <tspan x="65" y="1004.67">обузой для трудоспособного населения. Одним из подтверждений этого может служить значение греческого слова «схоле», от которого произошло слово «школа», имеющееся в несколько </tspan>
       <tspan x="65" y="1023.67">изменённой форме во многих языках. «Схоле» значило «заниматься чем-то во время досуга, проводить свободное время, быть праздным».</tspan>
@@ -13,12 +13,12 @@
     <text fill="#FCA526" xml:space="preserve" font-family="Cormorant" font-size="{% if name|length > 27 %}68{% else %}88{% endif %}" font-weight="300" letter-spacing="0em">
       <tspan x="64" y="116.028">{{ name }}</tspan>
     </text>
-    <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Helvetica Neue" font-size="30" letter-spacing="0em">
+    <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="30" letter-spacing="0em">
       <tspan x="64" y="168.085">окончил{% if sex == 'f' %}а{% endif %} курс «Профессиональный рост: меня и команды» </tspan>
       <tspan x="64" y="206.085">в сентябре 2021 года и теперь знает, как расти самому </tspan>
       <tspan x="64" y="244.085">и растить команду:</tspan>
     </text>
-    <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Cormorant" font-size="32" letter-spacing="0em">
+    <text fill="white" xml:space="preserve" font-family="Cormorant" font-size="32" letter-spacing="0em">
       <tspan x="64" y="312.192">Как быть хорошим наставником: </tspan>
       <tspan x="64" y="348.192">выстраивать план роста, </tspan>
       <tspan x="64" y="384.192">проводить регулярные встречи </tspan>
@@ -30,7 +30,7 @@
       <tspan x="64" y="564.192">
 </tspan>
     </text>
-    <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Cormorant" font-size="32" letter-spacing="0em">
+    <text fill="white" xml:space="preserve" font-family="Cormorant" font-size="32" letter-spacing="0em">
       <tspan x="547" y="312.192">Как выбрать траекторию роста
 </tspan>
       <tspan x="547" y="366.192">Как запустить наставничество </tspan>
