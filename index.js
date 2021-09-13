@@ -6,18 +6,17 @@ const fs = require("fs").promises;
 const app = express();
 
 app.get("/:template.png", async (req, res) => {
-  const context = req.query;
   const { template } = req.params;
 
   try {
     await fs.readFile(`templates/${template}.svg`);
-  } catch {
-    res.status(404).send(`Template templates/${template}.svg not found`);
-    return;
+  } catch (_) {
+    res.status(400).send(`templates/${template}.svg not found`);
   }
 
-  const svg = nunjucks.render(`templates/${template}.svg`, req.query); // render tempalte with the context from request GET params
+  const svg = nunjucks.render(`templates/${template}.svg`, req.query); // render template with the context from request GET params
   const image = await svgToImg.from(svg).toPng();
+
   res.type("png");
   res.send(image);
 });

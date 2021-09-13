@@ -1,10 +1,11 @@
 {
-  "name": "education-svg2png",
+  "name": "Tough developers school diploma generator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -e js,svg index.js",
+    "lint": "eslint *.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fedor Borshev",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.12",
