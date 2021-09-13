@@ -1,9 +1,20 @@
 const express = require("express");
+const bearerToken = require("express-bearer-token");
 const svgToImg = require("svg-to-img");
 const nunjucks = require("nunjucks");
 const fs = require("fs").promises;
 
 const app = express();
+
+app.use(bearerToken());
+
+app.use((req, res, next) => {
+  if (process.env.SECRET_TOKEN && process.env.SECRET_TOKEN !== req.token) {
+    res.status(401).send('Please use RFC6750 token auth');
+    return;
+  }
+  next();
+});
 
 app.get("/:template.png", async (req, res) => {
   const { template } = req.params;
@@ -12,6 +23,7 @@ app.get("/:template.png", async (req, res) => {
     await fs.readFile(`templates/${template}.svg`);
   } catch (_) {
     res.status(400).send(`templates/${template}.svg not found`);
+    return;
   }
 
   const svg = nunjucks.render(`templates/${template}.svg`, req.query); // render template with the context from request GET params

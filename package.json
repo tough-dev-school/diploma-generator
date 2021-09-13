@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
+    "express-bearer-token": "^2.4.0",
     "nunjucks": "^3.2.3",
     "svg-to-img": "^2.0.9"
   },
