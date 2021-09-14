@@ -1,11 +1,26 @@
 const express = require("express");
 const bearerToken = require("express-bearer-token");
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
 const morgan = require("morgan");
 const svgToImg = require("svg-to-img");
 const nunjucks = require("nunjucks");
 const fs = require("fs").promises;
 
 const app = express();
+
+if (process.env.SENTRY_DSN && process.env.SENTRY_DSN.length) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    integrations: [
+      new Sentry.Integrations.Http({ tracing: true }),
+      new Tracing.Integrations.Express({ app }),
+    ],
+  });
+}
+
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
 
 app.use(morgan("combined"));
 app.use(bearerToken());
@@ -34,6 +49,8 @@ app.get("/:template.png", async (req, res) => {
   res.type("png");
   res.send(image);
 });
+
+app.use(Sentry.Handlers.errorHandler());
 
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || "127.0.0.1";
