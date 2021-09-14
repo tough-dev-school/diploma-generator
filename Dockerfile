@@ -18,7 +18,7 @@ RUN wget https://github.com/google/fonts/archive/main.zip \
   && rm main.zip \
   && cd fonts-main && mv apache/* ofl/* ufl/* /usr/local/share/fonts/ \
   && fc-cache -v \
-  && cd ../ && rm -Rf fonts-master
+  && cd ../ && rm -Rf fonts-main
 
 WORKDIR /app
 ADD package*.json /app/
