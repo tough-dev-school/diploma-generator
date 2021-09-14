@@ -25,4 +25,7 @@ This services gets automatically deployed to heroku upon push to the master. The
 First, you have to create and svg image out of the mock-up. Here is an example using figma:
 ![Create an SVG using figma](https://user-images.githubusercontent.com/1592663/133264066-411ad45a-d4f4-4c18-a353-377a9c57a386.png)
 
-Second, you should create a template out of the SVG, using nonjucks [variable substitution](https://mozilla.github.io/nunjucks/templating.html#variables) and [condigitional tags](https://mozilla.github.io/nunjucks/templating.html#if). Place the resulting file to the templates/ folder and voila!
+Second, convert it tu utf-8. for text to become readable by a human. In MacOS or Linux: `xmllint --format --encode utf-8 downloaded.svg > downloaded-readble.svg`
+.
+
+Third, create a text template out of the SVG, using nonjucks [variable substitution](https://mozilla.github.io/nunjucks/templating.html#variables) and [condigitional tags](https://mozilla.github.io/nunjucks/templating.html#if). Place the resulting file to the templates/ folder and voila!
