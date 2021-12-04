@@ -23,9 +23,12 @@ if (process.env.SENTRY_DSN && process.env.SENTRY_DSN.length) {
 app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
-app.use(timeout('28s'));
 app.use(morgan("combined"));
 app.use(bearerToken());
+
+app.use((req, res, next) =>
+  req.path.includes("warmup") ? next() : timeout("29s")(req, res, next)
+);
 
 app.use((req, res, next) => {
   if (process.env.SECRET_TOKEN && process.env.SECRET_TOKEN !== req.token) {
