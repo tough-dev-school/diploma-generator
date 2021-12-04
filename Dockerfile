@@ -30,4 +30,5 @@ ENV PORT 3000
 ADD . /app
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["node", "index.js"]
+
+CMD node warmup.js & node index.js
