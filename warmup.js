@@ -25,11 +25,19 @@ const query = () =>
     },
   });
 
+setTimeout(() => {
+  console.log("Running initial warmup...");
+  query()
+    .then(() => console.log("Done!"))
+    .catch(() => console.error("Error!"));
+}, 3000);
+
+console.log("Running scheduler...");
 const scheduler = new ToadScheduler();
 
 scheduler.addSimpleIntervalJob(
   new SimpleIntervalJob(
-    { seconds: 20 },
+    { seconds: 60 },
     new AsyncTask("Periodiacly query the main service", query)
   )
 );

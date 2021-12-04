@@ -1,5 +1,6 @@
 const express = require("express");
 const bearerToken = require("express-bearer-token");
+const timeout = require("connect-timeout");
 const Sentry = require("@sentry/node");
 const Tracing = require("@sentry/tracing");
 const morgan = require("morgan");
@@ -22,6 +23,7 @@ if (process.env.SENTRY_DSN && process.env.SENTRY_DSN.length) {
 app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
+app.use(timeout('28s'));
 app.use(morgan("combined"));
 app.use(bearerToken());
 
