@@ -31,4 +31,4 @@ ADD . /app
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD node --optimize_for_size --max_old_space_size=460 warmup.js & node index.js
+CMD node warmup.js & node index.js
