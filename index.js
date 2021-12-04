@@ -1,6 +1,5 @@
 const express = require("express");
 const bearerToken = require("express-bearer-token");
-const timeout = require("connect-timeout");
 const Sentry = require("@sentry/node");
 const Tracing = require("@sentry/tracing");
 const morgan = require("morgan");
@@ -25,10 +24,6 @@ app.use(Sentry.Handlers.tracingHandler());
 
 app.use(morgan("combined"));
 app.use(bearerToken());
-
-app.use((req, res, next) =>
-  req.path.includes("warmup") ? next() : timeout("29s")(req, res, next)
-);
 
 app.use((req, res, next) => {
   if (process.env.SECRET_TOKEN && process.env.SECRET_TOKEN !== req.token) {
