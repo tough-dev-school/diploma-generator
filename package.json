@@ -1,5 +1,6 @@
 {
-  "name": "Tough developers school diploma generator",
+  "name": "diploma-generator",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
