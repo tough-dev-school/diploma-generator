@@ -12,8 +12,8 @@
   "author": "Fedor Borshev",
   "license": "MIT",
   "dependencies": {
-    "@sentry/node": "6.18.1",
-    "@sentry/tracing": "6.18.1",
+    "@sentry/node": "6.18.2",
+    "@sentry/tracing": "6.18.2",
     "axios": "0.26.0",
     "express": "4.17.3",
     "express-bearer-token": "^2.4.0",
