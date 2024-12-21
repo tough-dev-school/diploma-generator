@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=16 <17"
+  },
   "scripts": {
     "dev": "nodemon -e js,svg index.js",
     "lint": "eslint *.js",
