@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": ">=16 <17"
+    "node": ">=20 <21"
   },
   "scripts": {
     "dev": "nodemon -e js,svg index.js",
@@ -22,7 +22,7 @@
     "express-bearer-token": "^2.4.0",
     "morgan": "^1.10.0",
     "nunjucks": "^3.2.3",
-    "svg-to-img": "^2.0.9",
+    "sharp": "^0.33.5",
     "toad-scheduler": "^1.6.0"
   },
   "devDependencies": {
