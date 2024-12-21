@@ -3,7 +3,7 @@ const bearerToken = require("express-bearer-token");
 const Sentry = require("@sentry/node");
 const Tracing = require("@sentry/tracing");
 const morgan = require("morgan");
-const svgToImg = require("svg-to-img");
+const sharp = require('sharp');
 const nunjucks = require("nunjucks");
 const fs = require("fs").promises;
 
@@ -44,7 +44,7 @@ app.get("/:template.png", async (req, res) => {
   }
 
   const svg = nunjucks.render(`templates/${template}.svg`, req.query); // render template with the context from request GET params
-  const image = await svgToImg.from(svg).toPng();
+  const image = await sharp(Buffer.from(svg), {density: 72*2}).png().toBuffer();
 
   res.type("png");
   res.send(image);
