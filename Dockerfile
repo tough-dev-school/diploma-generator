@@ -31,4 +31,4 @@ ADD . /app
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD node warmup.js & node index.js
+CMD node index.js
