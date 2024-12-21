@@ -84,4 +84,4 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           username: circle
           key: ${{ secrets.DEPLOY_KEY }}
-          script: docker service update diploma-generator_backend --image ghcr.io/${{ steps.image.outputs.lowercase }}:${{ github.sha }} --with-registry-auth
+          script: docker service update app_diploma-generator --image ghcr.io/${{ steps.image.outputs.lowercase }}:${{ github.sha }} --with-registry-auth
