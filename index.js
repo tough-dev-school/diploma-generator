@@ -12,6 +12,7 @@ const app = express();
 if (process.env.SENTRY_DSN && process.env.SENTRY_DSN.length) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
+    release: process.env.RELEASE,
     integrations: [
       new Sentry.Integrations.Http({ tracing: true }),
       new Tracing.Integrations.Express({ app }),
