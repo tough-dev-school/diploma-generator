@@ -44,7 +44,17 @@ app.get("/:template.png", async (req, res) => {
     return;
   }
 
-  const svg = nunjucks.render(`templates/${template}.svg`, req.query); // render template with the context from request GET params
+  // Build a safe, flat context: only own string query params are allowed through,
+  // preventing prototype-pollution / constructor-chain injection via nested
+  // query objects (e.g. ?constructor[prototype][x]=y) or dangerous key names.
+  const context = Object.create(null);
+  for (const key of Object.keys(req.query)) {
+    if (typeof req.query[key] === "string") {
+      context[key] = req.query[key];
+    }
+  }
+
+  const svg = nunjucks.render(`templates/${template}.svg`, context); // render template with the sanitized context from request GET params
   const image = await sharp(Buffer.from(svg), {density: 72*2}).png().toBuffer();
 
   res.type("png");
