@@ -1,16 +1,13 @@
-FROM node:20.18.1-bullseye
+FROM node:24-bookworm-slim
 
-RUN apt-get update \
-  && apt-get install -yq --no-install-recommends gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
-    libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
-    libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
-    libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
-    ca-certificates fonts-liberation libnss3 lsb-release xdg-utils wget unzip dumb-init \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN echo deb http://deb.debian.org/debian bullseye contrib non-free > /etc/apt/sources.list.d/debian-contrib.list && apt-get update \
+# sharp rasterizes the SVG templates itself (libvips ships with the npm package),
+# so all it needs from the system is fontconfig and the fonts.
+# ttf-mscorefonts-installer lives in contrib, which is not enabled by default.
+RUN echo "deb http://deb.debian.org/debian bookworm contrib" > /etc/apt/sources.list.d/debian-contrib.list \
+  && apt-get update \
   && echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections \
-  && apt-get install -y --no-install-recommends fontconfig ttf-mscorefonts-installer \
+  && apt-get install -yq --no-install-recommends \
+    ca-certificates dumb-init fontconfig fonts-liberation ttf-mscorefonts-installer unzip wget \
   && rm -rf /var/lib/apt/lists/*
 
 RUN wget --progress=dot:giga https://github.com/google/fonts/archive/main.zip \
@@ -26,6 +23,11 @@ RUN npm ci
 
 ENV HOST=0.0.0.0
 ENV PORT=3000
+
+# Kept below the expensive layers on purpose: RELEASE changes on every commit
+# and would otherwise invalidate the font cache above.
+ARG RELEASE=dev
+ENV RELEASE=$RELEASE
 
 COPY . /app
 
