@@ -65,7 +65,7 @@
     <g style="mix-blend-mode:overlay">
       <rect x="768.742" y="-614" width="1317.45" height="988.087" transform="rotate(90 768.742 -614)" fill="url(#pattern4_3100_5)" fill-opacity="0.6"/>
     </g>
-    <text fill="#DF188C" xml:space="preserve" style="white-space: pre" font-family="PT Mono" font-size="32" font-weight="bold" letter-spacing="0em">
+    <text fill="#DF188C" xml:space="preserve" style="white-space: pre" font-family="PT Mono" font-size="28" font-weight="bold" letter-spacing="0em">
       <tspan x="80" y="161.4">{% if sex == 'f' %}Прошла{% else %}Прошёл{% endif %} курс «Коммуникации систем» {{ date_ru_1 }}</tspan>
       <tspan x="80" y="201.4">{{ date_ru_2 }} и сдал{% if sex == 'f'%}а{% endif %} всю практику. Теперь знает, как:</tspan>
     </text>
